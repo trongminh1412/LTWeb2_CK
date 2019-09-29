@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> <%= title %> </title>
+
+    <% include ./layout/header %>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="Khung"></div>
+        <div id="header">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="/" class="navbar-brand"><img src="/static/images/images.png"
+                                style="width:120px; height: 40px;">
+                        </a>
+
+                    </div>
+                    <div class="navbar-collapse collpase" id="main-menu">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/login" class="hvr-underline-form-center">Trang Chủ</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown">Danh Sách Phim<span class="caret"></span></a>
+                            </li>
+                            <li>
+                                <a href="/cinox/cinox">Rạp Chiếu Phim</a>
+                            </li>
+                            <li>
+                                <a href="#">Liên Hệ</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="search-container">
+                                    <form action="/search-movies" method="POST">
+                                        <input type="text" placeholder="Search.." name="search">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </li>
+                            <% if(data) { %>
+                            <% if(dataAdmin) {%>
+
+                            <li>
+                                <a href="/user/upfilm" class="navbar-btn navbar-right btn_dn"> Quản lý Phim </a>
+                            </li>
+
+                            <% } %>
+
+                            <li>
+                                <a href="/edit" class="navbar-btn navbar-right btn_dn"> <%= data.name %> </a>
+                            </li>
+
+                            <% } else { %>
+
+                            <li>
+                                <a href="/login" class="navbar-btn navbar-right btn_dn"> Đăng Nhập </a>
+                            </li>
+
+                            <% } %>
+
+                            <% if(data) { %>
+                            <li>
+                                <a href="/exit" class="navbar-btn navbar-right btn_dn"> Đăng Xuất </a>
+                            </li>
+
+                            <% } else { %>
+                            <li>
+                                <a href="/user/signup" class="navbar-btn navbar-right btn_dn"> Đăng ký </a>
+                            </li>
+                            <% } %>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="walpper"></div>
+        <div class="PhimNow">
+            <div class="container">
+                <center>
+                    <h1 style="color: white">PHIM MỚI CÔNG CHIẾU</h1>
+                </center>
+                <% movie.rows.forEach(function(phim){%>
+                <div class="col-md-2">
+                    <div class="block-wrapper">
+                        <div class="movie-thumbnail ratio-box ratio-3_4">
+                            <form action="/movies" method="POST">
+                                <input name="id" type="hidden" value="<%=phim.id%>">
+                                <input name="ten" type="hidden" value="<%=phim.ten%>">
+                                <figure class="public-film-item-thumb ratio-content">
+                                    <img src="/static/images/<%= phim.poster%> " />
+                                    <figcaption class="hvr-float-shadow">
+                                        <button type="submit">Đặt vé</button>
+                                    </figcaption>
+                                </figure>
+
+                            </form>
+                        </div>
+                        <div class="movie-meta">
+                            <div class="movie-title-1"><%=phim.ten%></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+            <div class="container">
+
+                <center>
+                    <h1 style="color: white">PHIM SẮP CÔNG CHIẾU</h1>
+                </center>
+                <% movien.rows.forEach(function(phim){%>
+                <div class="col-md-2">
+                    <div class="block-wrapper">
+                        <div class="movie-thumbnail ratio-box ratio-3_4">
+                            <form action="/movies" method="POST">
+                                <input name="id" type="hidden" value="<%=phim.id%>">
+                                <input name="ten" type="hidden" value="<%=phim.ten%>">
+                                <figure class="public-film-item-thumb ratio-content">
+                                    <img src="/static/images/<%= phim.poster%> " />
+                                    <figcaption class="hvr-float-shadow">
+                                        <button type="submit">Đặt vé</button>
+                                    </figcaption>
+                                </figure>
+
+                            </form>
+                        </div>
+                        <div class="movie-meta">
+                            <div class="movie-title-1"><%=phim.ten%></div>
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+
+
+
+    <% include ./layout/footer %>
+
+</body>
+
+</html>

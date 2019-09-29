@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Booking </title>
+
+    <% include ./layout/header %>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="Khung"></div>
+
+        <div id="header">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="/" class="navbar-brand"><img src="/static/images/images.png"
+                                style="width:120px; height: 40px;">
+                        </a>
+
+                    </div>
+                    <div class="navbar-collapse collpase" id="main-menu">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/" class="hvr-underline-form-center">Trang Chủ</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown">Danh Sách Phim<span class="caret"></span></a>
+                            </li>
+                            <li>
+                                <a href="#">Mua Vé</a>
+                            </li>
+                            <li>
+                                <a href="/cinox/cinox">Rạp Chiếu Phim</a>
+                            </li>
+                            <li>
+                                <a href="#">Liên Hệ</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="search-container">
+                                    <form action="/search-movies" method="POST">
+                                        <input type="text" placeholder="Search.." name="search">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </li>
+                            <% if(data) { %>
+                            <% if(dataAdmin) {%>
+
+                            <li>
+                                <a href="/user/upfilm" class="navbar-btn navbar-right btn_dn"> Quản lý Phim </a>
+                            </li>
+
+                            <% } %>
+
+                            <li>
+                                <a href="/edit" class="navbar-btn navbar-right btn_dn"> <%= data.name %> </a>
+                            </li>
+
+                            <% } else { %>
+
+                            <li>
+                                <a href="/login" class="navbar-btn navbar-right btn_dn"> Đăng Nhập </a>
+                            </li>
+
+                            <% } %>
+
+                            <% if(data) { %>
+                            <li>
+                                <a href="/exit" class="navbar-btn navbar-right btn_dn"> Đăng Xuất </a>
+                            </li>
+
+                            <% } else { %>
+                            <li>
+                                <a href="/user/signup" class="navbar-btn navbar-right btn_dn"> Đăng ký </a>
+                            </li>
+                            <% } %>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <%if(book){%>
+
+        <div class="cinox">
+
+        </div>
+        <div class="col-main">
+            <div class="booking-progress">
+                <div class="page-title">
+                    <center>
+                        <p style="color: white">BOOKING ONLINE</p>
+                    </center>
+                </div>
+                <div class="top-content">
+                    <ol class="products-list">
+                        <p style="font-size: 14px ;font-weight: bold"><%= book.rows[0].ten_rap%> | Số ghế:
+                            <% var tich=book.rows[0].kt_doc*book.rows[0].kt_ngang%><%=tich %></p>
+                        <p style="font-size: 14px;font-weight: bold"><%= book.rows[0].tg_batdau%> ~
+                            <%= book.rows[0].tg_ketthuc%></p>
+                    </ol>
+                </div>
+                <center>
+                    <label>Ghế</label>
+                </center>
+                <div class="ticketbox">
+                    <%for(var i=1;i<=book.rows[0].kt_doc;i++){%>
+                    <div class="row">
+                        <%var ma_ghe= ["0","A","B","C","D","E","F","G","H","I","J","K","L"] %>
+                        <%for(var j=1;j<=book.rows[0].kt_ngang;j++){%>
+                        <% var x=ma_ghe[i]+j; %>
+                        <% var dc =1;%>
+                        <% ghe.rows.forEach(function(a){%>
+                        <% if(x==a.ma_ghe){ dc= 0; } %>
+
+                        <%})%>
+                        <%if(dc==0){%>
+                        <div id="<%=ma_ghe[i]%><%=j%>" class="seat-disable"><%=ma_ghe[i]%><%=j%></div>
+                        <%}else{%>
+                        <div id="<%=ma_ghe[i]%><%=j%>" class="seat"><%=ma_ghe[i]%><%=j%></div>
+                        <%}%>
+                        <%}%>
+
+                    </div>
+                    <%}%>
+                </div>
+                <div class="ticketbox-notice ">
+                    <div class="iconlist">
+                        <div class="icon">
+                            <div id="before"></div>
+                             Check
+                        </div>
+                        <div class="icon">
+                                <div id="disable"></div>
+                                 Đã chọn
+                        </div>
+                        <div class="icon">
+                                <div id="enable"></div>
+                                Còn trống
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-content">
+                <div class="minicart-wrapper">
+                    <ul>
+                        <li class="itemfirst">
+                            <div class="product-details">
+                                <table class="info-wrapper">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <td>
+                                            <img src="/static/images/<%=book.rows[0].poster%>" style="width: auto
+                    ;height: 18%;" />
+                    </td>
+                    <td>
+                        <table class="info-wrapper">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <%=book.rows[0].ten%></td>
+                                </tr>
+                                <tr>
+                                    <td class="label"><%=book.rows[0].loai_rap%></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                    </tbody>
+                    </table>
+                </div>
+                </li>
+                <li class="item">
+                    <div class="product-details">
+                        <table class="info-wrapper">
+                            <tbody>
+                                <tr>
+                                    <td>Rạp chiếu phim</td>
+                                    <td><%=book.rows[0].ten_rap%></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày</td>
+                                    <td><%=book.rows[0].tg_batdau%></td>
+                                </tr>
+                                <tr>
+                                    <td>Ghế</td>
+                                    <td id="ghe"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="product-details">
+                        <table class="info-wrapper">
+                            <tbody>
+                                <tr>
+                                    <td>Giá vé: </td>
+                                    <td id="price"><%=book.rows[0].giave%></td>
+                                    <td>đ</td>
+                                </tr>
+                                <tr>
+                                    <td>Tổng tiền: </td>
+                                    <td id="prices"></td>
+                                    <td>đ</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                </ul>
+            </div>
+            <form action="/book/addTicket" method="POST" class="btn-right">
+                <input name="id_sc" type="hidden" value="<%=book.rows[0].id_sc%>">
+                <input name="tong_tien" type="hidden" value="0">
+                <input name="ma_ghe" type="hidden" value="0">
+                <input name="gia_tien" type="hidden" value="<%=book.rows[0].giave%>">
+                <button class="btn-right" type="submit">
+                </button>
+            </form>
+        </div>
+
+    </div>
+    </div>
+    <%}%>
+    <script>
+        var buttons = document.getElementsByClassName('seat');
+        var u = [];
+        var count = 0;
+        for (var j = 0; j < buttons.length; j++) {
+            u[j] = true;
+        }
+        function check() {
+
+            for (var k = 0; k < buttons.length; k++) {
+                if (buttons[k].classList.item(1) == "checked") {
+                    document.getElementById('ghe').innerHTML += buttons[k].getAttribute('id') + ";";
+                }
+            }
+        }
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function () {
+
+                this.classList.toggle("checked");
+                if (this.classList.item(1) == "checked") {
+
+                    count += 1;
+                    document.getElementById('ghe').innerHTML += this.getAttribute('id') + ";";
+                }
+                else {
+                    count -= 1;
+                    document.getElementById('ghe').innerHTML = "";
+                    check();
+                }
+                document.getElementById('prices').innerHTML = document.getElementById('price').innerHTML * count;
+                document.getElementsByTagName("INPUT")[2].setAttribute("value", document.getElementById('price').innerHTML * count);
+                document.getElementsByTagName("INPUT")[3].setAttribute("value", document.getElementById('ghe').innerHTML);
+            })
+        }
+
+
+    </script>
+       <% include ./layout/footer %>
+
+</body>
+
+</html>

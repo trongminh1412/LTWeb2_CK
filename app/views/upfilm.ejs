@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Upload film </title>
+
+    <% include ./layout/header %>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="Khung"></div>
+
+        <div id="header">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="/" class="navbar-brand"><img src="/static/images/images.png"
+                                style="width:120px; height: 40px;">
+                        </a>
+
+                    </div>
+                    <div class="navbar-collapse collpase" id="main-menu">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/login" class="hvr-underline-form-center">Trang Chủ</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown">Danh Sách Phim<span class="caret"></span></a>
+                            </li>
+                            <li>
+                                <a href="#">Mua Vé</a>
+                            </li>
+                            <li>
+                                <a href="#">Liên Hệ</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="search-container">
+                                    <form action="/search-movies" method="POST">
+                                        <input type="text" placeholder="Search.." name="search">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </li>
+                            <% if(data) { %>
+
+
+                            <li>
+                                <a href="/edit" class="navbar-btn navbar-right btn_dn"> <%= data %> </a>
+                            </li>
+
+                            <% } else { %>
+
+                            <li>
+                                <a href="/login" class="navbar-btn navbar-right btn_dn"> Đăng Nhập </a>
+                            </li>
+
+                            <% } %>
+
+                            <% if(data) { %>
+                            <li>
+                                <a href="/exit" class="navbar-btn navbar-right btn_dn"> Đăng Xuất </a>
+                            </li>
+
+                            <% } else { %>
+
+                            <li>
+                                <a href="/user/signup" class="navbar-btn navbar-right btn_dn"> Đăng ký </a>
+                            </li>
+
+                            <% } %>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="cinox">
+
+        </div>
+        <center>
+            <h1 style="color: white">UPLOAD FILM</h1><br>
+        </center>
+        <div class="container">
+            <form action="/user/upfilm" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label style="color: white; font-size: 18px; width: 200px">Tên: </label>
+                    <input name="ten" type="text"><br><br>
+                    <label style="color: white; font-size: 18px; width: 200px">Ngày công chiếu: </label>
+                    <input name="ngaycongchieu" type="date"><br>
+                    <label style="color: white; font-size: 18px; width: 200px">Poster: </label>
+                    <input name="poster" type="file">
+                    <label style="color: white; font-size: 18px; width: 200px">Thời lượng: </label>
+                    <input name="thoiluong" type="text">
+                    <center><button class="btn btn-primary" type="submit" style="font-size: 20px; margin: 35px">Thêm</button></center>
+                </div>
+            </form>
+            <% if(err) { %>
+            <center><div class="alert alert-danger" role="alert">
+                Lỗi nhập thiếu thông tin phim!
+              </div>
+            </center>
+            <% } %>
+            <% if(pass) { %>
+                <center><div class="alert alert-success" role="alert">
+                    Thêm phim thành công!
+                  </div>
+                </center>
+                <% } %>
+        </div>
+        
+        <% include ./layout/footer %>
+
+</body>
+
+</html>

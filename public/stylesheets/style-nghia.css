@@ -1,0 +1,410 @@
+
+.cinox{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	background:  no-repeat;
+}
+.title{
+	font-size: 40px;
+	color: white;
+}
+.container-top{
+	width: auto;
+    
+	background: rgb(150, 105, 201);
+}
+.container-2{
+    width: 962px;
+	margin:  auto;
+	
+	padding: 50px;
+	background: rgb(150, 105, 201);
+}
+.cinemas-area {
+		float: left;
+		width: 100%;
+	
+		border-bottom: 2px solid #727171;
+		border-top: 2px solid #727171;
+		padding: 6px 10px 15px;
+	}
+
+.cum-cinox{
+	margin: 20px;
+	height: auto;
+	color: white;
+}
+
+div.container-3 {
+	width: 60%;  
+	margin: auto;  
+}
+
+.tabcontent {
+	width: 100%;
+}
+.tablinks{
+	float: left;
+	width: 90px;
+	
+}
+#kc{
+	height: 50px;
+}
+.theater-container {
+    width: 980px;
+    margin: 0px auto 0px;
+}
+.heater-head {
+	height: auto;
+	margin-top: 30px;
+	background: #CCCCCC;
+}
+.home-title {
+    background: url(/static/images/Capture.png) ;
+	height: 60px;
+	
+	margin-left: auto;
+	margin-right: auto;
+    width: auto;
+}
+.cinemax{
+	margin: 10px;
+}
+#full-movies{
+	
+	width: auto;
+}
+/* Canh trái giá trị mỗi cột */
+.uk 
+{
+     width: auto;
+     height: 200px;
+}
+ 
+/* Canh trái giá trị mỗi cột */
+.ukli
+{
+    float: left;
+	width: 150px;
+    
+    text-align: center;
+}
+div.wrapper
+{
+ 	margin-bottom: 10px;
+}
+.header-left{
+    float: left;
+    width :24%;
+}
+.header-right{
+    float: left;
+	width :76%;
+	height: auto;
+}
+.clear-both{
+    clear: both;
+}
+.tablinks:active{
+	background-color: red;
+}
+.border-sc{
+	width: 100px;
+	border-radius: 5px; 
+	
+	border: 1px solid rgb(65, 61, 61); 
+	word-wrap: break-word;
+}
+.uk-2 
+{
+	width: auto;
+}
+ 
+/* Canh trái giá trị mỗi cột */
+.ukli-2
+{
+    float: left;
+	width: 110px;
+}
+/*Book.ejs*/
+/*----------------*/
+
+
+.col-main {
+    margin: 0 auto;
+    width: 75%;
+}
+.booking-progress {
+    width: 100%;
+    
+    background-color: #F2F0E4;
+    display: block;
+}
+.page-title  {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    margin-bottom: 15px;
+    background-color: black;
+}
+.top-content{
+    width: 100%;
+    padding: 5px;
+    border-bottom: 2px solid #d4d3c9;
+    background: #fff1ce;
+    overflow: hidden;
+}
+.products-list {
+    width: 100%;
+}
+.ticketbox {
+    padding-bottom: 10px;
+    text-align: center;
+}
+.seat {
+    display: inline-block;
+    border: 1px solid green;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    font-size: 7pt;
+    margin: 1px;
+}
+.seat.checked {
+    background: #b11500;
+    color: #fff;
+    border-color: #b11500;
+}
+.seat-disable {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    font-size: 7pt;
+    margin: 1px;
+
+    background: #bbb;
+    border: 1px solid #bbb;
+    color: #fff;
+}
+.bottom-content {
+    background-color: #000;
+    font-size: 0;
+}
+.format-bg-top {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+}
+.minicart-wrapper {
+    font-size: 0;
+    color: #cccccc;
+    width: 750px;
+    display: inline-block;
+    margin: 0 3px;
+}
+ul, ol, li {
+    list-style: none;
+    float: left;
+}
+.minicart-wrapper .item {
+    display: inline-block;
+    width: 30%;
+    margin-left: 1%;
+    font-size: 12px;
+}
+.minicart-wrapper .itemfirst {
+    display: inline-block;
+    width: 30%;
+    margin-left: 1%;
+    font-size: 12px;
+}
+.minicart-wrapper .product-details {
+    padding-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+}
+table{
+    font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+    color: #222;
+    font-size: 14px;
+	line-height: 18px;
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+.info-wrapper {
+    color: #cccccc;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.info-wrapper td {
+    padding: 0 5px;
+    font-weight: bold;
+    white-space: normal;
+    vertical-align: top;
+}
+.btn-right {
+    border: none;
+  
+    width: 82px;
+    display: inline-block;
+    margin: 0 0 0 3px;
+    height: 82px;
+    vertical-align: top;
+    background: url(/static/images/bg-cgv-button-process.png) no-repeat;
+}
+
+.btn{
+    border: none;
+}
+.ticketbox-notice {
+    overflow: hidden;
+    text-align: center;
+}
+.iconlist {
+    display: inline-block;
+    min-width: auto;
+    vertical-align: top;
+}
+.icon {
+    text-align: left;
+    margin: 5px 0;
+}
+#before {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    font-size: 7pt;
+    margin: 1px;
+
+    background: #b11500;
+    color: #fff;
+    border-color: #b11500;
+}
+#disable{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    font-size: 7pt;
+    margin: 1px;
+
+    background: #bbb;
+    border: 1px solid #bbb;
+    color: #fff;
+}
+#enable{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    font-size: 7pt;
+    margin: 1px;
+    border: 1px solid green;
+}
+.product-img-box {
+    width: 20%;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    float: left;
+}
+.product-shop {
+    width: 80%;
+    float: right;
+
+}
+.search-container {
+    float: right;
+  }
+  
+ input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+.search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  .button{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+  .button1 {
+   
+      width: 100px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+  }
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+  }
+  
+  /* Fade in tabs */
+  @-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

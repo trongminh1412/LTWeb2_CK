@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> Movies </title>
+
+    <% include ./layout/header %>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="Khung"></div>
+
+        <div id="header">
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="/" class="navbar-brand"><img src="/static/images/images.png"
+                                style="width:120px; height: 40px;">
+                        </a>
+
+                    </div>
+                    <div class="navbar-collapse collpase" id="main-menu">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/" class="hvr-underline-form-center">Trang Chủ</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown">Danh Sách Phim<span class="caret"></span></a>
+                            </li>
+
+                            <li>
+                                <a href="/cinox/cinox">Rạp Chiếu Phim</a>
+                            </li>
+                            <li>
+                                <a href="#">Liên Hệ</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="search-container">
+                                    <form action="/search-movies" method="POST">
+                                        <input type="text" placeholder="Search.." name="search">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </li>
+                            <% if(data) { %>
+                            <% if(dataAdmin) {%>
+
+                            <li>
+                                <a href="/user/upfilm" class="navbar-btn navbar-right btn_dn">
+                                    Quản lý Phim
+                                </a>
+                            </li>
+
+                            <% } %>
+
+                            <li>
+                                <a href="/edit" class="navbar-btn navbar-right btn_dn">
+                                    <%= data %>
+                                </a>
+                            </li>
+
+                            <% } else { %>
+
+                            <li>
+                                <a href="/login" class="navbar-btn navbar-right btn_dn">
+                                    Đăng Nhập
+                                </a>
+                            </li>
+
+                            <% } %> <% if(data) { %>
+                            <li>
+                                <a href="/exit" class="navbar-btn navbar-right btn_dn">
+                                    Đăng Xuất
+                                </a>
+                            </li>
+
+                            <% } else { %>
+
+                            <li>
+                                <a href="/user/signup" class="navbar-btn navbar-right btn_dn">
+                                    Đăng ký
+                                </a>
+                            </li>
+
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="cinox">
+
+    </div>
+    <div class="col-main">
+        <div class="booking-progress">
+            <div class="page-title">
+                <center>
+                    <p style="color: white">NỘI DUNG PHIM</p>
+                </center>
+            </div>
+            <div class="top-content">
+                <div class=".product-img-box">
+                    <div class="col-md-2">
+                        <figure class="images-PhimNow">
+                            <img src="/static/images/<%=phim.rows[0].poster%>" />
+                        </figure>
+                    </div>
+                </div>
+                <div class="product-shop">
+                    <h2><%=phim.rows[0].ten%></h2>
+                    <hr width="100%" size="20px" align="center" style="border-color:black;" />
+                    <p>Ngày công chiếu: <%= d %></p>
+                    <p>Thời lượng: <%=phim.rows[0].thoi_luong%></p>
+                </div>
+            </div>
+            <div class="top-content">
+                <div class="booking-progress">
+                    <div class="page-title">
+                        <center>
+                            <p style="color: white">CỤM RẠP</p>
+                        </center>
+                    </div>
+
+                </div>
+
+                <div class="cinemax">
+                    <div class="uk">
+                        <% item.rows.forEach(function(i){ %>
+                        <div class="ukli">
+                            <form action="/cinox/cine" method="POST">
+                                <div class="cinemax">
+                                    <input name="id_phim" type="hidden" value="<%=phim.rows[0].id%>">
+                                    <input name="id_cum_rap" type="hidden" value="<%=i.id%>">
+                                    <button type="submit" class="button1"><%=i.ten%></button>
+                                </div>
+                            </form>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div class="container-top">
+                </div>
+
+                <div class="booking-progress">
+                    <div class="page-title">
+                        <center>
+                            <p style="color: white">Suất chiếu</p>
+                        </center>
+                    </div>
+                    <%if(rap){%>
+                    <div class="cinema-area">
+                        <% rap.rows.forEach(function(a){%>
+                        <h3><%= a.ten%></h3>
+                        <h4>Loại rạp <%=a.loai_rap%></h4>
+                        <div class="uk-2">
+                            <% suatchieu.rows.forEach(function(c){%>
+                            <%if(c.id_rap == a.id){%>
+
+                            <div class="ukli-2">
+                                <form action="/cinox/book" method="POST">
+                                    <input name="id_rap" type="hidden" value="<%=c.id_rap%>">
+                                    <input name="id_sc" type="hidden" value="<%=c.id_sc%>">
+                                    <button class="border-sc" type="submit">
+                                        <h6><%=c.tg_batdau%>
+                                            <h6>Số ghế: <% var doc=c.kt_doc;var ngang=c.kt_ngang;var tich=doc*ngang%>
+                                                <%=tich %>
+                                            </h6>
+                                    </button>
+                                </form>
+                            </div>
+                            <%}%>
+                            <%})%>
+                        </div>
+                        <hr width="100%" size="20px" align="center" style="border-color:black;" />
+                        <%})%>
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+
+        <% include ./layout/footer %>
+
+</body>
+
+</html>
